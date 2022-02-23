@@ -42,30 +42,26 @@ class ArticlesUpdateCron extends Command
      */
     public function handle()
     {
-        //$data = Http::accept('application/json')->get('https://api.spaceflightnewsapi.net/v3/articles?_limit=100000&_sort=id')->collect();
-        $data = Http::accept('application/json')->get('https://api.spaceflightnewsapi.net/v3/articles')->collect();
-        foreach ($data as $d) {
-//            Article::create([
-//                'title' => $d['title']
-//            ]);
+        $res = Http::accept('application/json')->get('https://api.spaceflightnewsapi.net/v3/articles?_limit=100')->collect();
 
-            $d['_id'] = $d['id'];
+        $resOrder = $res->sortBy('id', SORT_ASC);
 
-            $validacao = Article::where('_id', $d['_id'])->get();
+        $count = 0;
+        foreach ($resOrder as $d) {
 
+            $artigoExiste = Article::where('id', $d['id'])->get();
 
-            if (isset($validacao)) {
+            if (count($artigoExiste->keyBy('id')) <= 0) {
                 $article = Article::create($d);
-                //Log::info('Caiu nesse > ' . $d['id']);
-                Log::info('Criou um novo >>> ' . $article);
-
+                if ($article) {
+                    $count++;
+                }
                 foreach ($d['launches'] as $launch) {
                     Launch::create([
                         '_id' => $launch['id'],
                         'provider' => $launch['provider'],
                         'article_id' => $article['id'],
                     ]);
-                    //Log::info('Existe launch ' . $launch['id']);
                 }
 
                 foreach ($d['events'] as $event) {
@@ -74,12 +70,10 @@ class ArticlesUpdateCron extends Command
                         'provider' => $event['provider'],
                         'article_id' => $article['id'],
                     ]);
-                    //Log::info('Existe event ' . $event['id']);
                 }
             }
-
         }
-
+        Log::info("Foram adicionados {$count} registros");
         //return 0;
     }
 }

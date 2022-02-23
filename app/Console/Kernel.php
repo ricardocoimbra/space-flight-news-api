@@ -17,8 +17,10 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         /** TODO Descomentar a linha abaixo e comentar as outras */
-        $schedule->command('articles_update:cron')->dailyAt('5:00'); // Based in UTC 5:00h is 9:00h local
-        //$schedule->command('articles_update:cron')->everyMinute();
+        $schedule->command('articles_update:cron')->everyMinute();
+        //$schedule->command('articles_update:cron')->hourly();
+        //$schedule->command('articles_update:cron')->dailyAt('5:00'); // Based in UTC 5:00h is 9:00h local
+
 
     }
 

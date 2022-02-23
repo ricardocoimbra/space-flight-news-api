@@ -18,7 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('_id');
             $table->string('provider');
             $table->foreignId('article_id')->constrained('articles');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

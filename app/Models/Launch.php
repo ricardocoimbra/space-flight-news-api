@@ -10,6 +10,7 @@ class Launch extends Model
     use HasFactory;
 
     protected $fillable = ['_id', 'provider', 'article_id'];
+    public $timestamps = false;
 
     public function article()
     {

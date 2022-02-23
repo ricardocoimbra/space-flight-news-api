@@ -9,7 +9,7 @@ class Article extends Model
 {
     use HasFactory;
     protected $fillable = [
-        '_id',
+        'id',
         'featured',
         'title',
         'url',
