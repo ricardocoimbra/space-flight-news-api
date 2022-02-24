@@ -28,8 +28,8 @@ class Article extends Model
         return $this->hasMany(Event::class);
     }
 
-//    public function getIdAttribute($value)
-//    {
-//        $this->attributes['id'] = $this->attributes['_id'];
-//    }
+    public function getFeaturedAttribute($featured): bool
+    {
+        return $featured;
+    }
 }

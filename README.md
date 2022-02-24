@@ -1,4 +1,3 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 
 ![Badge](https://img.shields.io/badge/MySpaceFlightNewsAPI-1.0.0-%23542F61?style=for-the-badge)
@@ -6,14 +5,17 @@
 ![Badge](https://img.shields.io/badge/PHP-v^7.4|^8.0-%233570B2?style=for-the-badge&logo=php)
 ![Badge](https://img.shields.io/badge/Composer-v2.1.9-%238B4513?style=for-the-badge&logo=appveyor)
 
-
-# Teste para vaga de Desenvolvedor PHP Junior
+# Back-end Challenge 🏅 2021 - Space Flight News
+## Teste para vaga de Desenvolvedor PHP Junior
 
 Olá caro recrutador, nesse teste utilizei meus conhecimentos para tentar entregar o que foi solicitado.
 
 ## 🎯 Desafio proposto:
 
+Este desafio foi proposto para que eu pudesse mostrar minhas habilidades como Back-end Developer.
 
+Desenvolver uma REST API que utilizará os dados do projeto [Space Flight News](https://api.spaceflightnewsapi.net/v3/documentation), uma API pública com informações relacionadas a voos espaciais. 
+O projeto a ser desenvolvido por mim tem como objetivo criar a API permitindo assim a conexão de outras aplicações.
 
 ## 🛠 Ferramentas
 
@@ -26,9 +28,7 @@ Olá caro recrutador, nesse teste utilizei meus conhecimentos para tentar entreg
 
 ## 📦 Requisitos para rodar o sistema
 
--[PHP 7.4 ou superior](https://www.php.net/downloads)
--[Composer](https://getcomposer.org/download/)
--[Docker](https://getcomposer.org/download/)
+- Ter o [Docker](https://getcomposer.org/download/) instalado
 
 ## 🚀 Executando o projeto
 
@@ -108,11 +108,19 @@ The following endpoints are available:
 | Endpoints                             | Usage                                       | 
 | ------------------------------------- | ------------------------------------------- | 
 | `GET /api/`                           | Index message                               |
-| `GET /api/v1/articles`                | Get all of the articles.                    |
-| `GET /api/v1/articles/:id`            | Get the details of a single article         |
-| `POST /api/v1/articles`               | Create an article.                          | 
-| `PATCH /api/v1/articles/:id`          | Edit the details of an existing article.    | 
-| `DELETE /api/v1/articles/:id`         | Remove the article.                         |
+| `GET /api/articles`                   | Get all of the articles.                    |
+| `GET /api/articles/{id}`              | Get the details of a single article         |
+| `POST /api/articles`                  | Create an article.                          | 
+| `PATCH /api/articles/{id}`            | Edit the details of an existing article.    | 
+| `DELETE /api/articles/{id}`           | Remove the article.                         |
+
+
+![GET /api/](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_01.png)
+![GET /api/articles](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_02.png)
+![GET /api/](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_03.png)
+![GET /api/](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_04.png)
+![GET /api/](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_05.png)
+![GET /api/](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_06.png)
 
 
 ### Obrigado!
