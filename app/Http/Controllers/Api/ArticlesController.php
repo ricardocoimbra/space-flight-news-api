@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Event;
+use App\Models\Launch;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -38,7 +40,25 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        $article = Article::create($request->all());
+        $data = $request->all();
+        $article = Article::create($data);
+
+        foreach ($data['launches'] as $launch) {
+            Launch::create([
+                '_id' => $launch['id'],
+                'provider' => $launch['provider'],
+                'article_id' => $article['id'],
+            ]);
+        }
+
+        foreach ($data['events'] as $event) {
+            Event::create([
+                '_id' => $event['id'],
+                'provider' => $event['provider'],
+                'article_id' => $article['id'],
+            ]);
+        }
+
         return response()->json(['message' => 'Article created'], 201);
 
     }
@@ -52,7 +72,6 @@ class ArticlesController extends Controller
     public function show($id)
     {
         $article = Article::with(['launches', 'events'])->find($id);
-        //$article->makeHidden('id', 'created_at', 'updated_at');
         if (is_null($article)) {
             return response()->json(['message' => 'No content'], 204);
         }
@@ -72,8 +91,36 @@ class ArticlesController extends Controller
         if (is_null($article)) {
             return response()->json(['message' => 'Not found'], 404);
         }
-        $article->fill($request->all());
+        $data = $request->all();
+
+        $article->fill($data);
         $article->save();
+
+        $launchesEdit = $article->launches;
+        $eventsEdit = $article->events;
+
+        if (count($data['launches']) > 0 ) {
+            foreach ($launchesEdit as $key => $elaunch) {
+                if (isset($elaunch['id'])) {
+                    $launch = Launch::find($elaunch['id']);
+                    $data['launches'][$key]['article_id'] = $article->id;
+                    $launch->fill($data['launches']);
+                    $launch->save();
+                }
+            }
+        }
+
+        if (count($data['events']) > 0 ) {
+            foreach ($eventsEdit as $key => $eevent) {
+                if (isset($eevent['id'])) {
+                    $event = Launch::find($eevent['id']);
+                    $data['events'][$key]['article_id'] = $article->id;
+                    $event->fill($data['events']);
+                    $event->save();
+                }
+            }
+        }
+
         return response()->json(['message' => 'Article updated'], 200);
     }
 
@@ -93,6 +140,6 @@ class ArticlesController extends Controller
 
         $article->delete();
 
-        return response()->json('', 204);
+        return response()->json(['message' => 'No content'], 204);
     }
 }

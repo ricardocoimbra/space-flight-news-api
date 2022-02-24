@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('url');
             $table->string('imageUrl');
             $table->string('newsSite');
-            $table->string('summary');
+            $table->text('summary');
             $table->string('publishedAt');
             $table->timestamps();
         });

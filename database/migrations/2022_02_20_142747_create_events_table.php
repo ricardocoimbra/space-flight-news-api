@@ -15,9 +15,9 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('_id');
+            $table->string('_id')->nullable();
             $table->string('provider');
-            $table->foreignId('article_id')->constrained('articles');
+            $table->foreignId('article_id')->constrained('articles')->onDelete('cascade');
             //$table->timestamps();
         });
     }
