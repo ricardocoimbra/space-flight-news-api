@@ -1,5 +1,4 @@
 
-
 ![Badge](https://img.shields.io/badge/MySpaceFlightNewsAPI-1.0.0-%23542F61?style=for-the-badge)
 ![Badge](https://img.shields.io/badge/Laravel-v8.75-red?style=for-the-badge&logo=laravel)
 ![Badge](https://img.shields.io/badge/PHP-v^7.4|^8.0-%233570B2?style=for-the-badge&logo=php)
@@ -92,9 +91,6 @@ crie as tabelas no banco de dados, executando a migração
    docker exec spaceflight-app php artisan migrate 
 ```
 
-```markdown
- GET
-```
 
 Para pegar os dados da API https://api.spaceflightnewsapi.net/v3/articles para essa, execute o comando de seed 
 ```shell
@@ -117,10 +113,10 @@ The following endpoints are available:
 
 ![GET /api/](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_01.png)
 ![GET /api/articles](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_02.png)
-![GET /api/](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_03.png)
-![GET /api/](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_04.png)
-![GET /api/](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_05.png)
-![GET /api/](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_06.png)
+![POST /api/articles](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_03.png)
+![GET /api/articles/{id}](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_04.png)
+![PUT /api/articles/{id}](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_05.png)
+![DELETE /api/articles/{id}](https://github.com/ricardocoimbra/space-flight-news-api/blob/main/public/images/api_img_06.png)
 
 
 ### Obrigado!
